@@ -138,3 +138,26 @@ START TRANSACTION
 INSERT 0 1
 COMMIT
 ROLLBACK
+
+Ques 8 :-> Write a query to display the member's name, book title, and borrow date for all borrowing activities. Use an appropriate join to relate the Borrowings, Members, and Books tables.
+Query: 
+SELECT 
+    m.name AS member_name, 
+    b.title AS book_title, 
+    br.borrow_date
+FROM 
+    Borrowings br
+JOIN 
+    Members m ON br.member_id = m.member_id
+JOIN 
+    Books b ON br.book_id = b.book_id;
+Output:
+member_name | book_title | borrow_date 
+-------------+------------+-------------
+ Ayush       | Book1      | 2025-01-01
+ Abhinav     | Book2      | 2025-01-02
+ Vishal      | Book3      | 2025-01-03
+ Varun       | Book4      | 2025-01-04
+ Priyanshu   | Book5      | 2025-01-05
+ Abhinav     | Book1      | 2025-03-10
+(6 rows)
