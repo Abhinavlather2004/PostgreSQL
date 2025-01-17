@@ -14,6 +14,27 @@ Output:
         1 |      130.00
 (2 rows)
 
+Another Query(with Joins):  SELECT
+                                o.order_id,
+                                SUM(p.price * oi.quantity) AS total_sales_amount
+                            FROM
+                                Ordersss o
+                            JOIN
+                                Order_Itemss oi ON o.order_id = oi.order_id
+                            JOIN
+                                Productss p ON oi.product_id = p.product_id
+                            GROUP BY
+                                o.order_id
+                            ORDER BY
+                                o.order_id;
+Output:
+ order_id | total_sales_amount 
+----------+--------------------
+        1 |             210.00
+        2 |             300.00
+        3 |              70.00
+(3 rows)
+
 
 
 Problem: Find all customers who placed an order in the last 30 days.
