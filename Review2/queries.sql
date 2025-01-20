@@ -78,3 +78,11 @@ Query: INSERT INTO Students ( StudentID, First_name, Last_Name, EnrollmentDate, 
 , 'Ayush20@gmail.com');
 
 Query: INSERT INTO Courses ( CourseID, CourseName, Credits) VALUES ( 1, 'English', 8), (2, 'Hindi', 6);
+
+Query: SELECT s.StudentID, s.First_name, s.Last_name FROM Students s WHERE s.StudentID IN ( SELECT e.StudentID FROM Enrollments e GROUP BY e.StudentID HAVING COUNT(e.CourseID) > 3);
+
+Query: SELECT s.StudentID, s.First_name, s.Last_name FROM Students s WHERE s.StudentID IN ( SELECT e.StudentID FROM Enrollments e GROUP BY e.StudentID HAVING AVG(e.Grade) >= 1.0);
+
+Query: CREATE INDEX idx_enrollments_student_course ON Enrollments (StudentID, CourseID);
+
+Query: SELECT * FROM Enrollments WHERE StudentID = 1 AND CourseID = 1;
